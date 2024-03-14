@@ -1,0 +1,16 @@
+how order status button works in glizzard
+
+
+Button Click Event Listener: When a color-changing button is clicked, the JavaScript code attached to the button's click event fires.
+
+Toggle Color and Text: Inside the click event listener, the code toggles the color and text of the button. If the button currently has the class 'btn-warning', it switches the class to 'btn-info' and updates the text to 'Completed'. If the button has the class 'btn-info', it switches the class to 'btn-warning' and updates the text to 'Pending'. This gives the visual feedback of the button changing color and text when clicked.
+
+Update Status: After toggling the color and text, the code sends an XMLHttpRequest to the server-side script update_status.php, passing the order ID and the new status as parameters. The status is determined based on the text of the button: 'Completed' corresponds to a status of 1 (confirmed), and 'Pending' corresponds to a status of 0 (pending).
+
+Server-side Handling: In the update_status.php script, it receives the order ID and the new status sent from the client-side JavaScript. It then updates the status of the corresponding order in the orderpayment table in the database using an SQL query.
+
+Response Handling: Upon successfully updating the status in the database, the update_status.php script sends back a response to the client-side JavaScript code, indicating that the status was updated successfully.
+
+Client-side Response Handling: The client-side JavaScript code handles the response from the server, typically by logging a message to the console indicating that the status was updated successfully. This step provides feedback to the user or developer about the outcome of the status update operation.
+
+By following these steps, the code allows the user to interact with the color-changing button, visually indicating the status of an order, and ensures that the status is accurately updated in the database. The session storage part is not directly involved in this process; it was primarily used in the previous code to maintain the button's color and text state after page refresh, which has been removed in your updated version.
